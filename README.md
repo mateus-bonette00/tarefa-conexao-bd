@@ -2,7 +2,8 @@
 
 Disciplina: Banco de Dados II  
 Professora: Vanessa Cristina Oliveira de Souza  
-Integrantes: 
+<br>
+Dupla: 
 - Mateus de Freitas Bonette - 2020001519
 - Gustavo Kiyoshi Souza Noda - 2020000718
 
