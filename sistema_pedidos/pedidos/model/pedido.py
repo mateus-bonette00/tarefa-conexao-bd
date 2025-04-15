@@ -5,7 +5,7 @@ class Pedido:
         self.cliente_nome = cliente_nome
         self.funcionario_nome = funcionario_nome
         self.data_pedido = data_pedido or date.today()
-        self.itens = []  # lista de tuplas (produto_nome, quantidade, preco)
+        self.itens = []
 
     def adicionar_item(self, produto_nome, quantidade, preco):
         self.itens.append((produto_nome, quantidade, preco))

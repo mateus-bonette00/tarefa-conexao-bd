@@ -6,7 +6,6 @@ def inserir_pedido_inseguro(pedido):
         conn = conectar()
         cur = conn.cursor()
 
-        # ⚠️ Query INSEGURA com f-string (vulnerável a SQL Injection)
         query_cliente = f"SELECT customerid FROM northwind.customers WHERE companyname = '{pedido.cliente_nome}'"
         cur.execute(query_cliente)
         cliente = cur.fetchone()

@@ -41,7 +41,6 @@ def ranking_funcionarios_por_periodo(data_inicio, data_fim):
     session = Session()
 
     try:
-        # Subconsulta: total vendido por pedido
         resultados = (
             session.query(
                 Employees.firstname,

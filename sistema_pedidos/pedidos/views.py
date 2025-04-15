@@ -15,7 +15,7 @@ def index(request):
             itens = [(produto, quantidade, preco)]
             order_id = criar_pedido_com_itens(cliente, funcionario, itens, modo)
 
-            print("ID DO PEDIDO:", order_id)  # ✅ pode colocar aqui sem erro
+            print("ID DO PEDIDO:", order_id) 
 
             return render(request, 'confirmacao.html', {
                 'cliente': cliente,
@@ -47,7 +47,6 @@ def relatorio_pedido(request):
             conn = conectar()
             cur = conn.cursor()
 
-            # Cabeçalho do pedido
             cur.execute("""
                 SELECT o.orderid, o.orderdate, c.companyname, e.firstname || ' ' || e.lastname
                 FROM northwind.orders o
@@ -60,7 +59,6 @@ def relatorio_pedido(request):
             if not cabecalho:
                 erro = f"Pedido {pedido_id} não encontrado."
             else:
-                # Itens do pedido
                 cur.execute("""
                     SELECT p.productname, od.quantity, od.unitprice
                     FROM northwind.order_details od
@@ -134,7 +132,6 @@ def sql_injection_teste(request):
             conn = conectar()
             cur = conn.cursor()
 
-            # 🚨 Modo inseguro (SQL Injection)
             query = f"SELECT companyname FROM northwind.customers WHERE companyname = '{nome}'"
             cur.execute(query)
             resultado = cur.fetchall()
