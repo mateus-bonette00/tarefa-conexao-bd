@@ -14,7 +14,7 @@ Session = sessionmaker(bind=engine)
 
 def inserir_pedido_orm(pedido):
     try:
-        engine = create_engine(DB_URI)
+        engine = create_engine(DATABASE_URL)
         Session = sessionmaker(bind=engine)
         session = Session()
 
