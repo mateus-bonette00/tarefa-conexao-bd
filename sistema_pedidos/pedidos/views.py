@@ -4,18 +4,34 @@ from pedidos.controller.pedido_controller import criar_pedido_com_itens
 
 def index(request):
     if request.method == 'POST':
-        cliente = request.POST['cliente']
-        funcionario = request.POST['funcionario']
-        produto = request.POST['produto']
-        quantidade = int(request.POST['quantidade'])
-        preco = float(request.POST['preco'])
+        try:
+            cliente = request.POST['cliente']
+            funcionario = request.POST['funcionario']
+            produto = request.POST['produto']
+            quantidade = int(request.POST['quantidade'])
+            preco = float(request.POST['preco'])
+            modo = request.POST.get('modo', 'seguro')
 
-        itens = [(produto, quantidade, preco)]
-        criar_pedido_com_itens(cliente, funcionario, itens)
+            itens = [(produto, quantidade, preco)]
+            order_id = criar_pedido_com_itens(cliente, funcionario, itens, modo)
 
-        return render(request, 'confirmacao.html', {'cliente': cliente})
-    
+            print("ID DO PEDIDO:", order_id)  # ✅ pode colocar aqui sem erro
+
+            return render(request, 'confirmacao.html', {
+                'cliente': cliente,
+                'modo': modo,
+                'order_id': order_id
+            })
+
+        except Exception as e:
+            return render(request, 'confirmacao.html', {
+                'cliente': cliente if 'cliente' in locals() else '',
+                'modo': modo if 'modo' in locals() else '',
+                'erro': f"Erro ao processar pedido: {str(e)}"
+            })
+
     return render(request, 'index.html')
+
 
 from django.shortcuts import render
 from pedidos.database.conexao import conectar
@@ -106,6 +122,33 @@ def ranking_funcionarios(request):
         'dados': dados,
         'erro': erro
     })
+    
+def sql_injection_teste(request):
+    resultado = None
+    erro = None
+
+    if request.method == 'POST':
+        nome = request.POST.get('nome', '')
+
+        try:
+            conn = conectar()
+            cur = conn.cursor()
+
+            # 🚨 Modo inseguro (SQL Injection)
+            query = f"SELECT companyname FROM northwind.customers WHERE companyname = '{nome}'"
+            cur.execute(query)
+            resultado = cur.fetchall()
+
+            cur.close()
+            conn.close()
+
+        except Exception as e:
+            erro = str(e)
+
+    return render(request, 'sql_injection.html', {
+        'resultado': resultado,
+        'erro': erro
+    })    
     
 def home(request):
     return render(request, 'home.html')

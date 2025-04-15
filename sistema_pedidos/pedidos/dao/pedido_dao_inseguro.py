@@ -47,10 +47,13 @@ def inserir_pedido_inseguro(pedido):
 
         conn.commit()
         print(f"[INSEGURO] Pedido inserido com sucesso! ID: {order_id}")
+        return order_id
 
     except Exception as e:
-        print("Erro (inseguro):", e)
+        print("Erro ao inserir pedido (modo inseguro):", e)
         conn.rollback()
+        return None
+    
     finally:
         cur.close()
         conn.close()

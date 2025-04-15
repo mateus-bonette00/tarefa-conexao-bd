@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de SQL Injection</title>
+    <link rel="stylesheet" href="{% static 'pedidos/style.css' %}">
+</head>
+<body>
+    <h1>Simulação de SQL Injection</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Digite o nome do cliente:</label>
+        <input type="text" name="nome">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if erro %}
+        <p style="color:red;">Erro: {{ erro }}</p>
+    {% endif %}
+
+    {% if resultado %}
+        <h3>Resultado:</h3>
+        <ul>
+            {% for r in resultado %}
+                <li>{{ r.0 }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

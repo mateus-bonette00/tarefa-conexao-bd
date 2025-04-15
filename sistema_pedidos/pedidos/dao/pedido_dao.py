@@ -45,10 +45,14 @@ def inserir_pedido(pedido):
 
         conn.commit()
         print(f"Pedido inserido com sucesso! ID: {order_id}")
+        return order_id  # ✅ Retorna o ID para ser usado no template
 
     except Exception as e:
         print("Erro ao inserir pedido:", e)
         conn.rollback()
+        return None  # retorna None em caso de erro
+
     finally:
         cur.close()
         conn.close()
+
