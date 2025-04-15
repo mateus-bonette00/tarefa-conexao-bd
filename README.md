@@ -1,8 +1,9 @@
 # Tarefa Prática – Conexão com Banco de Dados
 
 Disciplina: Banco de Dados II  
-Professora: Vanessa Souza
-Integrantes: 
+Professora: Vanessa Cristina Oliveira de Souza  
+<br>
+Dupla: 
 - Mateus de Freitas Bonette - 2020001519
 - Gustavo Kiyoshi Souza Noda - 2020000718
 
