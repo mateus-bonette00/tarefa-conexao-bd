@@ -1,0 +1,21 @@
+# Bytecode Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+venv/
+.env/
+
+db.sqlite3
+
+.vscode/
+
+*.log
+*.tmp
+*.swp
+*.bak
+
+*.sqlite3
+*.pyc
+.DS_Store
