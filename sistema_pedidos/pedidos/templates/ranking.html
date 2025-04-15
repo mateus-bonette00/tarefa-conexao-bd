@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranking de Funcionários</title>
+    <link rel="stylesheet" href="{% static 'pedidos/style.css' %}">
+</head>
+<body>
+    <h1>Ranking de Funcionários</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Data início:</label>
+        <input type="date" name="data_inicio" required>
+        <label>Data fim:</label>
+        <input type="date" name="data_fim" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if erro %}
+        <p style="color: red;">{{ erro }}</p>
+    {% endif %}
+
+    {% if dados %}
+        <div class='dados-ranking'>
+            <hr>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <tr>
+                    <th>Funcionário</th>
+                    <th>Total de Pedidos</th>
+                    <th>Total Vendido</th>
+                </tr>
+                {% for linha in dados %}
+                <tr>
+                    <td>{{ linha.0 }}</td>
+                    <td>{{ linha.1 }}</td>
+                    <td>R$ {{ linha.2|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>    
+    {% endif %}
+</body>
+</html>

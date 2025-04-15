@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model.models_orm import Orders, Customers, Employees, OrderDetails, Products
+from pedidos.model.models_orm import Orders, Customers, Employees, OrderDetails, Products
 
 DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/northwind"
 engine = create_engine(DATABASE_URL)

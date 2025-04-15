@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Inserir Pedido</title>
+    <link rel="stylesheet" href="{% static 'pedidos/style.css' %}">
+</head>
+<body>
+    <h1>Inserir novo pedido</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Cliente:</label><input type="text" name="cliente"><br>
+        <label>Funcionário:</label><input type="text" name="funcionario"><br>
+        <label>Produto:</label><input type="text" name="produto"><br>
+        <label>Quantidade:</label><input type="number" name="quantidade"><br>
+        <label>Preço:</label><input type="number" name="preco" step="0.01"><br>
+        <button type="submit">Enviar Pedido</button>
+    </form>
+</body>
+</html>

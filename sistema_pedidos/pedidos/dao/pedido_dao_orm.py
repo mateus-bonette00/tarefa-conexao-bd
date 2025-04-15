@@ -1,7 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model.models_orm import Base, Customers, Employees, Products, Orders, OrderDetails
+from pedidos.model.models_orm import Base, Customers, Employees, Products, Orders, OrderDetails
+
 from datetime import datetime
+from pedidos.database.conexao import conectar
+
 
 # Configuração da conexão com SQLAlchemy
 DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/northwind"

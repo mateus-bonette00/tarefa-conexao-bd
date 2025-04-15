@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Pedidos</title>
+    <link rel="stylesheet" href="{% static 'pedidos/style.css' %}">
+    <style>
+        .menu h1{
+            color: #1e4971;
+        }
+
+        .menu {
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        .menu a {
+            display: block;
+            margin: 15px 0;
+            padding: 12px;
+            background-color: #1e4971;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .menu a:hover {
+            background-color: #003dc7;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Sistema de Pedidos</h1>
+        <a href="{% url 'index' %}">Inserir Pedido</a>
+        <a href="{% url 'relatorio_pedido' %}">Relatório de Pedido</a>
+        <a href="{% url 'ranking_funcionarios' %}">Ranking de Funcionários</a>
+    </div>
+</body>
+</html>

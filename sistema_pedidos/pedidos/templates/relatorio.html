@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Relatório de Pedido</title>
+    <link rel="stylesheet" href="{% static 'pedidos/style.css' %}">
+</head>
+<body>
+    <h1>Relatório de Pedido</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Digite o número do pedido:</label>
+        <input type="number" name="pedido_id" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if erro %}
+        <p style="color:red">{{ erro }}</p>
+    {% endif %}
+
+    {% if dados %}
+        <div class= 'dados'>
+            <hr>
+            <h2>Pedido #{{ dados.pedido_id }}</h2>
+            <p><strong>Data:</strong> {{ dados.data }}</p>
+            <p><strong>Cliente:</strong> {{ dados.cliente }}</p>
+            <p><strong>Funcionário:</strong> {{ dados.funcionario }}</p>
+
+            <h3>Itens:</h3>
+            <ul>
+                {% for item in dados.itens %}
+                    <li>{{ item.0 }} — {{ item.1 }} x R$ {{ item.2 }}</li>
+                {% endfor %}
+            </ul>
+        <div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    background-color: #0d1117;
+}
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 400px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0 auto;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #1e4971;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #003dc7;
+}
+
+.dados {
+    margin: 20px auto 0 auto;
+}
+
+.dados h2 {
+    color: white;
+}
+
+.dados p {
+    color: white;
+}
+
+.dados h3 {
+    color: white;
+}
+
+.dados ul {
+    color: white;
+}
+
+.dados-ranking table {
+    color: white;
+}
+
+.dados-ranking tr {
+    color: white;
+}
+
+.dados-ranking th {
+    color: white;
+}
+
+.dados-ranking td {
+    color: white;
+}

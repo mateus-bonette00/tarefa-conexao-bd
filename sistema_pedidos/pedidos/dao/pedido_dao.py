@@ -1,4 +1,5 @@
-from database.conexao import conectar
+from pedidos.database.conexao import conectar
+
 
 def inserir_pedido(pedido):
     try:
