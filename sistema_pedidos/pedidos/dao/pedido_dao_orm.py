@@ -5,8 +5,10 @@ from pedidos.model.models_orm import Base, Customers, Employees, Products, Order
 from datetime import datetime
 from pedidos.database.conexao import conectar
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IMPORTANTE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Atualize a senha do banco de dados
 
-DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/northwind"
+DATABASE_URL = "postgresql://postgres:admin@localhost:5432/northwind"
 
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)

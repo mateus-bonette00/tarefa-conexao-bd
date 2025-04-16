@@ -59,6 +59,9 @@ Implementar uma aplicação Python com interface web em Django para inserção d
 
 ## Como rodar
 
+Primeiramente, atualize a sua senha la no arquivo do codigo, para poder funcionar a conexão do app com o banco de dados.
+Mudar la no arquivo "conexão.py", e "pedido_dao_orm.py"
+
 ```bash
 # Instalar dependências
 pip install -r requirements.txt
@@ -68,3 +71,12 @@ cd sistema_pedidos
 
 # Rodar o servidor local
 python manage.py runserver
+```
+
+## Pode acontecer de ocorrer um erro na hora de inserir os pedidos no banco de dados, por causa da "orderid", tem que fazer alguns comandinhos SQL para funcionar corretamente:
+
+```
+CREATE SEQUENCE IF NOT EXISTS northwind.orders_orderid_seq;
+ALTER TABLE northwind.orders ALTER COLUMN orderid SET DEFAULT nextval('northwind.orders_orderid_seq');
+SELECT setval('northwind.orders_orderid_seq', (SELECT MAX(orderid) FROM northwind.orders));
+```
